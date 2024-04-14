@@ -1,8 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
-
 // useState requires an import
 import React, { useState } from "react";
+// Import stars from react-icons
+import { FaStar } from "react-icons/fa";
+
+
 
 // Array Destructuring Review
   // You can destructure arrays like so
@@ -13,6 +16,30 @@ console.log(second);
 const [,, third] = ["Dennis", "Ellie", "Fernando"]
 console.log(third);
 
+
+
+// Variable that returns an array of a specified length
+const createArray = (length) => [...Array(length)]
+
+// Function that returns a star icon
+function Star({selected = false, onSelect}) {
+  // The stars are red if selected, gray otherwise
+  return <FaStar color={selected ? "gold" : "gray"} onClick={onSelect} />
+}
+
+// Component that returns an array of stars
+  // The number of stars created is equal to totalStars, which has a default value of 5 if none is given
+function StarRating( {totalStars = 5} ){
+  
+  // useState for handling changing star colors
+  const [selectedStars, setSelectedStars] = useState(0); // Initial value is 0 since no stars are selected to begin with
+
+  return createArray(totalStars).map( (n, i) => (
+  <Star key={i} selected={selectedStars > i} onSelect={ ()=> setSelectedStars(i + 1) } />) );
+}
+
+
+
 function App() {
 
   // The useState hook returns an array of two values
@@ -22,13 +49,18 @@ function App() {
   console.log(result);
 
 
+
   // Since useState returns an array, you can use array destructuring to store those two returned values
     // The initial value of the state variable is passed through the useState() function as an argument
     // Common naming convention for the function value is "set" + the state variable name
   const [status, setStatus] = useState("Not Delivered");
 
+
+
   // useState with a checkbox
   const [checked, setChecked] = useState(false);
+
+
 
   return (
     <div className="App">
@@ -38,12 +70,21 @@ function App() {
       <button onClick={ ()=> setStatus("Delivered")}>Deliver</button>
 
       <br/>
+      <br/>
       <hr/>
+      <br/>
 
       {/* checked useState */}
       <input type='checkbox' value={checked} onChange={ ()=> setChecked( (checked) => !checked )}/>
       {/* Use a ternary operator to output checked or not checked based on the value of the checked state variable */}
       <p>{checked ? "checked" : "not checked"}</p>
+
+      <br/>
+      <hr/>
+      <br/>
+
+      {/* useState and component trees with stars */}
+      <StarRating totalStars={10} />
 
     </div>
   );
