@@ -21,21 +21,24 @@ console.log(third);
 // Variable that returns an array of a specified length
 const createArray = (length) => [...Array(length)]
 
-// Function that returns a star icon
+// Component that returns a star icon
+  // The props for this component determine if the star should be gold or grey
 function Star({selected = false, onSelect}) {
   // The stars are red if selected, gray otherwise
   return <FaStar color={selected ? "gold" : "gray"} onClick={onSelect} />
 }
 
 // Component that returns an array of stars
-  // The number of stars created is equal to totalStars, which has a default value of 5 if none is given
+  // The number of stars created is equal to the totalStars prop, which has a default value of 5 if none is given
 function StarRating( {totalStars = 5} ){
-  
   // useState for handling changing star colors
   const [selectedStars, setSelectedStars] = useState(0); // Initial value is 0 since no stars are selected to begin with
 
+  // Return an array of stars
   return createArray(totalStars).map( (n, i) => (
-  <Star key={i} selected={selectedStars > i} onSelect={ ()=> setSelectedStars(i + 1) } />) );
+    // Each star uses the selectedStars useState to determine to update the number of selected stars if clicked
+    <Star key={i} selected={selectedStars > i} onSelect={ ()=> setSelectedStars(i + 1) } />
+  ));
 }
 
 
