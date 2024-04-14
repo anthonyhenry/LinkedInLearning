@@ -1,23 +1,19 @@
 import logo from './logo.svg';
 import './App.css';
 
+// Array Destructuring Review
+  // You can destructure arrays like so
+const [first, second] = ["Anna", "Beth", "Charlie"]
+console.log(first);
+console.log(second);
+  // You can go straight to a later element like this
+const [,, third] = ["Dennis", "Ellie", "Fernando"]
+console.log(third);
+
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Hello World!</h1>
     </div>
   );
 }
