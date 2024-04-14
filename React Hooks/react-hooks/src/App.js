@@ -27,12 +27,23 @@ function App() {
     // Common naming convention for the function value is "set" + the state variable name
   const [status, setStatus] = useState("Not Delivered");
 
+  // useState with a checkbox
+  const [checked, setChecked] = useState(false);
+
   return (
     <div className="App">
 
       {/* status useState */}
       <h1>The package is: {status} </h1>
       <button onClick={ ()=> setStatus("Delivered")}>Deliver</button>
+
+      <br/>
+      <hr/>
+
+      {/* checked useState */}
+      <input type='checkbox' value={checked} onChange={ ()=> setChecked( (checked) => !checked )}/>
+      {/* Use a ternary operator to output checked or not checked based on the value of the checked state variable */}
+      <p>{checked ? "checked" : "not checked"}</p>
 
     </div>
   );
