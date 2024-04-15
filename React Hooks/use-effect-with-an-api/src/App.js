@@ -9,7 +9,7 @@ function App() {
     // Initialize this as an empty array
   const [data, setData] = useState([]);
 
-  // useEffect to fetch data from the api
+  // useEffect to fetch and set data from the api
   useEffect( () => {
     fetch("https://api.github.com/users")
     .then(response => response.json())
