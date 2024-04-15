@@ -67,7 +67,7 @@ function App() {
       <hr/>
       <br/>
 
-      {/* console.log() admin useEffect */}
+      {/* Change admin useEffect */}
       <p>{admin ? "logged in" : "not logged in"}</p>
       <button onClick={ ()=> setAdmin(true) }>Log in</button>
 
